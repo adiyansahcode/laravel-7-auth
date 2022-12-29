@@ -11,5 +11,29 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix
+  .js("resources/js/app.js", "public/js")
+  .sourceMaps();
+
+mix
+  // .postCss("resources/css/app.css", "public/css")
+  .sass('resources/sass/app.scss', 'public/css')
+  .copy(
+    "node_modules/@fortawesome/fontawesome-free/webfonts",
+    "public/webfonts"
+  )
+  .copy(
+    'node_modules/admin-lte/dist/img',
+    'public/dist/img'
+  )
+  ;
+
+if (mix.inProduction()) {
+  mix.version();
+}
+
+mix.webpackConfig({
+  stats: {
+    children: true
+  }
+});
