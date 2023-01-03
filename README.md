@@ -42,10 +42,3 @@ php -S 127.0.0.1:8080 -t public
 ```
 * done, just try run your project in browser to `http://127.0.0.1:8080`
 * **nginx server is recommended**
-
-## Function List
-
-* [x] User CRUD
-* [x] User Export and Import
-* [x] User Migrate and Seeder
-* [x] User Form Validation

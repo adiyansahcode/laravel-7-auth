@@ -13,9 +13,6 @@ const mix = require('laravel-mix');
 
 mix
   .js("resources/js/app.js", "public/js")
-  .sourceMaps();
-
-mix
   // .postCss("resources/css/app.css", "public/css")
   .sass('resources/sass/app.scss', 'public/css')
   .copy(
@@ -30,10 +27,12 @@ mix
 
 if (mix.inProduction()) {
   mix.version();
+} else {
+  // Uses inline source-maps on development
+  mix.webpackConfig({
+    devtool: "inline-source-map",
+    stats: {
+      children: true
+    }
+  });
 }
-
-mix.webpackConfig({
-  stats: {
-    children: true
-  }
-});
