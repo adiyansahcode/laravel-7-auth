@@ -1695,7 +1695,7 @@
                     /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\UserModel|null 
          * @static 
          */ 
         public static function user()
@@ -1730,7 +1730,7 @@
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
+         * @return \App\Models\UserModel|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1794,7 +1794,7 @@
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User|false 
+         * @return \App\Models\UserModel|false 
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -1867,7 +1867,7 @@
                     /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \App\Models\UserModel 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -1969,7 +1969,7 @@
                     /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\UserModel|null 
          * @static 
          */ 
         public static function getUser()
@@ -2015,7 +2015,7 @@
                     /**
          * Determine if current user is authenticated. If not, throw an exception.
          *
-         * @return \App\User 
+         * @return \App\Models\UserModel 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -14782,6 +14782,35 @@
         public static function emailVerification()
         {
                         return \Illuminate\Routing\Router::emailVerification();
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $roles
+         * @static 
+         */ 
+        public static function role($roles = [])
+        {
+                        return \Illuminate\Routing\Route::role($roles);
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $permissions
+         * @static 
+         */ 
+        public static function permission($permissions = [])
+        {
+                        return \Illuminate\Routing\Route::permission($permissions);
         }
          
     }

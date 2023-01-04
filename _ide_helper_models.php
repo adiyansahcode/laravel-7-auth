@@ -10,32 +10,62 @@
  */
 
 
-namespace App{
+namespace App\Models{
 /**
- * App\User
+ * App\Models\UserModel
  *
  * @property int $id
- * @property string $name
- * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
+ * @property string $uuid
+ * @property string|null $name
+ * @property string|null $username
+ * @property string|null $phone
+ * @property string|null $email
+ * @property \datetime|null $email_verified_at
+ * @property string|null $password
  * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \datetime|null $created_at
+ * @property int|null $created_by
+ * @property \datetime|null $updated_at
+ * @property int|null $updated_by
+ * @property \datetime|null $deleted_at
+ * @property int|null $deleted_by
+ * @property bool $is_active 0 = nonactive, 1 = active
+ * @property \datetime|null $activated_at
+ * @property int|null $activated_by
+ * @property \datetime|null $deactivated_at
+ * @property int|null $deactivated_by
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User query()
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereActivatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereActivatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereDeactivatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereDeactivatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereDeletedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserModel whereUuid($value)
  */
-	class User extends \Eloquent {}
+	class UserModel extends \Eloquent {}
 }
 
