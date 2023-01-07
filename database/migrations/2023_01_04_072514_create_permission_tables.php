@@ -28,9 +28,52 @@ class CreatePermissionTables extends Migration
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
-            $table->string('name');       // For MySQL 8.0 use string('name', 125);
-            $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
-            $table->timestamps();
+            $table->string('name', 50);       // For MySQL 8.0 use string('name', 125);
+            $table->string('guard_name', 125); // For MySQL 8.0 use string('guard_name', 125);
+
+            $table->dateTime('created_at')->nullable();
+            $table->foreignId('created_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('updated_at')->nullable();
+            $table->foreignId('updated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('deleted_at')->nullable();
+            $table->foreignId('deleted_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->boolean('is_active')->default(true);
+            $table->dateTime('activated_at')->nullable();
+            $table->foreignId('activated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('deactivated_at')->nullable();
+            $table->foreignId('deactivated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('active_started_at')->nullable();
+            $table->dateTime('active_ended_at')->nullable();
 
             $table->unique(['name', 'guard_name']);
         });
@@ -42,9 +85,53 @@ class CreatePermissionTables extends Migration
                 $table->unsignedBigInteger($columnNames['team_foreign_key'])->nullable();
                 $table->index($columnNames['team_foreign_key'], 'roles_team_foreign_key_index');
             }
-            $table->string('name');       // For MySQL 8.0 use string('name', 125);
-            $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
-            $table->timestamps();
+            $table->string('name', 50);       // For MySQL 8.0 use string('name', 125);
+            $table->string('guard_name', 125); // For MySQL 8.0 use string('guard_name', 125);
+
+            $table->dateTime('created_at')->nullable();
+            $table->foreignId('created_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('updated_at')->nullable();
+            $table->foreignId('updated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('deleted_at')->nullable();
+            $table->foreignId('deleted_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->boolean('is_active')->default(true);
+            $table->dateTime('activated_at')->nullable();
+            $table->foreignId('activated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('deactivated_at')->nullable();
+            $table->foreignId('deactivated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('active_started_at')->nullable();
+            $table->dateTime('active_ended_at')->nullable();
+
             if ($teams || config('permission.testing')) {
                 $table->unique([$columnNames['team_foreign_key'], 'name', 'guard_name']);
             } else {

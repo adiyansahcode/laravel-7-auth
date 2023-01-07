@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="description" content="{{ config('app.name', 'Laravel 7 Auth') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->

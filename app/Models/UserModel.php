@@ -18,7 +18,7 @@ class UserModel extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -58,6 +58,8 @@ class UserModel extends Authenticatable
         'deleted_at',
         'activated_at',
         'deactivated_at',
+        'active_started_at',
+        'active_ended_at',
     ];
 
     /**
@@ -66,6 +68,7 @@ class UserModel extends Authenticatable
      * @var array
      */
     protected $casts = [
+        'to_be_logged_out' => 'boolean',
         'email_verified_at' => 'datetime:Y-m-d H:i:s',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
@@ -73,6 +76,8 @@ class UserModel extends Authenticatable
         'is_active' => 'boolean',
         'activated_at' => 'datetime:Y-m-d H:i:s',
         'deactivated_at' => 'datetime:Y-m-d H:i:s',
+        'active_started_at' => 'datetime:Y-m-d H:i:s',
+        'active_ended_at' => 'datetime:Y-m-d H:i:s',
     ];
 
     /**

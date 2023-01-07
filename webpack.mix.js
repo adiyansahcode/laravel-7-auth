@@ -23,6 +23,7 @@ mix
     'node_modules/admin-lte/dist/img',
     'public/dist/img'
   )
+  .sourceMaps()
   ;
 
 if (mix.inProduction()) {

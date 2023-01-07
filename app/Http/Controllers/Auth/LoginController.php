@@ -36,4 +36,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm()
+    {
+        $layout = config('template.layout');
+
+        return view(
+            $layout . '.layouts.login',
+            [
+                'layout' => $layout,
+            ]
+        );
+    }
 }

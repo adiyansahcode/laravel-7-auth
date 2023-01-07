@@ -13,28 +13,65 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->string('name', 200)->nullable()->index();
-            $table->string('username', 200)->nullable()->index();
-            $table->string('phone', 200)->nullable()->index();
-            $table->string('email')->nullable()->index();
+            $table->string('name', 50)->nullable();
+            $table->string('username', 100)->nullable()->unique();
+            $table->string('phone', 20)->nullable()->unique();
+            $table->string('email', 100)->nullable()->unique();
             $table->dateTime('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->dateTime('password_changed_at')->nullable();
+            $table->dateTime('last_login_at')->nullable();
+            $table->string('last_login_ip', 100)->nullable();
+            $table->boolean('to_be_logged_out')->default(false);
+
             $table->rememberToken();
 
             $table->dateTime('created_at')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable()->index();
+            $table->foreignId('created_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
             $table->dateTime('updated_at')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable()->index();
+            $table->foreignId('updated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
             $table->dateTime('deleted_at')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable()->index();
-            $table->enum('is_active', ['0', '1'])->default('1')->comment('0 = nonactive, 1 = active');
+            $table->foreignId('deleted_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->boolean('is_active')->default(true);
             $table->dateTime('activated_at')->nullable();
-            $table->unsignedBigInteger('activated_by')->nullable()->index();
+            $table->foreignId('activated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
             $table->dateTime('deactivated_at')->nullable();
-            $table->unsignedBigInteger('deactivated_by')->nullable()->index();
+            $table->foreignId('deactivated_by_id')
+                ->nullable()
+                ->references('id')
+                ->on('user')
+                ->onUpdate('CASCADE')
+                ->onDelete('RESTRICT');
+
+            $table->dateTime('active_started_at')->nullable();
+            $table->dateTime('active_ended_at')->nullable();
         });
     }
 

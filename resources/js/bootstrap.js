@@ -10,7 +10,9 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+    window.moment = require("moment");
+
+    // require('bootstrap');
 } catch (e) {}
 
 /**
@@ -39,11 +41,3 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-// PopperJs
-window.Popper = require("popper.js").default;
-
-// jquery
-window.$ = window.jQuery = require("jquery");
-
-window.moment = require("moment");

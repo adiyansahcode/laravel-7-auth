@@ -9,3 +9,6 @@
 
 /* Admin-Lte */
 @import "admin-lte/dist/css/adminlte";
+
+/* icheck */
+@import "icheck-bootstrap/icheck-bootstrap";
