@@ -1,6 +1,6 @@
 {
-    "name": "Laravel",
-    "short_name": "Laravel",
+    "name": "Laravel 7 Auth",
+    "short_name": "Laravel 7 Auth",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

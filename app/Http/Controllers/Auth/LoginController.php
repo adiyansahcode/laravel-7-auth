@@ -42,7 +42,7 @@ class LoginController extends Controller
         $layout = config('template.layout');
 
         return view(
-            $layout . '.layouts.login',
+            $layout . '.auth.login',
             [
                 'layout' => $layout,
             ]

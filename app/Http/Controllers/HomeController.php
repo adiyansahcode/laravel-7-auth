@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $layout = config('template.layout');
+
+        return view(
+            $layout . '.home',
+            [
+                'layout' => $layout,
+            ]
+        );
     }
 }

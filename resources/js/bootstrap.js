@@ -8,11 +8,12 @@ window._ = require('lodash');
 
 try {
     window.Popper = require('popper.js').default;
+
     window.$ = window.jQuery = require('jquery');
+    require("jquery-ui/dist/jquery-ui");
+    $.widget.bridge('uibutton', $.ui.button);
 
     window.moment = require("moment");
-
-    // require('bootstrap');
 } catch (e) {}
 
 /**
