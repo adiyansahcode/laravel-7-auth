@@ -33,7 +33,10 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" alt="AdminLTELogo" height="60" width="60"
+      src="https://raw.githubusercontent.com/adiyansahcode/adiyansahcode/main/assets/laravel-icon-new.svg"
+      style="filter: invert(36%) sepia(80%) saturate(4145%) hue-rotate(199deg) brightness(101%) contrast(106%);"
+      >
     </div>
 
     @include($layout . '.layouts.navbar')
